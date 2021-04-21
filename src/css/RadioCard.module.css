@@ -1,0 +1,24 @@
+.container {
+  margin: 60px;
+  display: grid;
+  grid-row-gap: 10px;
+}
+.content {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.card1 {
+  display: flex;
+  flex-direction: row !important;
+  width: 40%;
+  border: none !important;
+  border-bottom: 1px solid purple !important;
+}
+
+.card1 img {
+  width: 80px;
+  height: 80px;
+  margin: auto;
+}

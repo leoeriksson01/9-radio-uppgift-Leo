@@ -1,0 +1,25 @@
+.container {
+  margin-bottom: 100px;
+}
+
+.a.nav-link {
+  font-size: 2em !important;
+}
+
+.profile_container {
+  position: absolute;
+  right: 100px;
+  top: 10px;
+  background: black;
+}
+
+.link {
+  font-size: 1.2rem;
+  margin: 10px;
+}
+
+@media (max-width: 768px) {
+  .brand {
+    display: none !important;
+  }
+}

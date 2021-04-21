@@ -1,0 +1,55 @@
+.home {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin: 2rem auto;
+  padding: 1rem;
+  transition: 0.3s;
+  width: 60%;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  background: rgba(0, 0, 0);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.banner {
+  background: url("../assets/banner.jpg");
+  height: 80vh;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bannerText {
+  color: white;
+  text-transform: uppercase;
+  text-shadow: 0 2px 2px purple;
+  font-weight: 350;
+  font-size: 60px;
+  text-align: center;
+}
+
+.card2 {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: yellow;
+  cursor: pointer;
+  margin: 2rem auto;
+  padding: 1rem;
+  transition: 0.3s;
+  width: 60%;
+}

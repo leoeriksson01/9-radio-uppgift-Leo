@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import BrowsePage from "./pages/BrowsePage";
+import ChannelProvider from "./contexts/ChannelContext";
+import ChannelPage from "./pages/ChannelPage";
+import Navigation from "./components/Navigation";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ChannelProvider>
+        <BrowserRouter>
+          <Navigation />
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/browse" component={BrowsePage} />
+          <Route exact path="/channels/:channelId" component={ChannelPage} />
+        </BrowserRouter>
+      </ChannelProvider>
     </div>
   );
-}
+};
 
 export default App;
