@@ -39,10 +39,10 @@ const Navigation = () => {
                 Home
               </Nav.Link>
               <Nav.Link className={style.link} href="/Browse">
-                Browse More
+                Channels
               </Nav.Link>
-              <Nav.Link className={style.link} href="/Schedule">
-                Schedule
+              <Nav.Link className={style.link} href="/Categories">
+                Programs/Categories
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

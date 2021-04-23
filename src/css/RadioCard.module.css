@@ -17,6 +17,19 @@
   border-bottom: 1px solid purple !important;
 }
 
+.card1:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.decorated {
+  text-decoration: underline !important;
+}
+
+.decorated:hover {
+  color: purple;
+}
+
 .card1 img {
   width: 80px;
   height: 80px;

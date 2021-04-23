@@ -9,6 +9,9 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/v1/channels", channelRoutes);
+app.use("/api/v1/category", channelRoutes);
+
+app.use("/api/v1", channelRoutes);
 // app.use("/api/v1/programs", programRoutes);
 
 app.listen(port, () => {

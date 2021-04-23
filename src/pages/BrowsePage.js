@@ -3,7 +3,7 @@ import RadioCard from "../components/RadioCard";
 
 const BrowsePage = () => {
   return (
-    <div className={style.home}>
+    <div className={style.main}>
       <RadioCard />
     </div>
   );

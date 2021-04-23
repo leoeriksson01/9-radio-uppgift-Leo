@@ -13,8 +13,6 @@ const getAllChannels = async (req, res) => {
 };
 
 const getChannelById = async (req, res) => {
-  console.log(req.params);
-  console.log("hfjashfuaguasghaui");
   let channel = await fetch(
     `http://api.sr.se/api/v2/channels/${req.params.channelId}?${json}`
   );
@@ -28,20 +26,30 @@ const getChannelSchedule = async (req, res) => {
   );
   channelSchedule = await channelSchedule.json();
 
-  // channelSchedule.schedule = channelSchedule.schedule.map((p) => {
-  //   console.log(new Date(p.starttimeutc));
-  //   return {
-  //     ...p,
-  //     starttimeutc: utils.convertToDateObject(p.starttimeutc),
-  //     endtimeutc: utils.convertToDateObject(p.endtimeutc),
-  //   };
-  // });
+  channelSchedule.schedule = channelSchedule.schedule.map((p) => {
+    console.log(new Date(p.starttimeutc));
+    return {
+      ...p,
+      starttimeutc: utils.convertToDateObject(p.starttimeutc),
+      endtimeutc: utils.convertToDateObject(p.endtimeutc),
+    };
+  });
 
   res.json(channelSchedule.schedule);
+};
+
+const getCategoryById = async (req, res) => {
+  let category = await fetch(
+    `http://api.sr.se/api/v2/programs/index?programcategoryid=${req.params.channelId}&${json}`
+  );
+  category = await category.json();
+  res.json(category);
+  console.log(req.params);
 };
 
 module.exports = {
   getAllChannels,
   getChannelById,
   getChannelSchedule,
+  getCategoryById,
 };
