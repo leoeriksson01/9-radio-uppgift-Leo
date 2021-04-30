@@ -9,13 +9,30 @@
 .profile_container {
   position: absolute;
   right: 100px;
-  top: 10px;
-  background: black;
+  top: 20px;
+}
+
+img {
+  height: 40px;
+  width: 40px;
 }
 
 .link {
   font-size: 1.2rem;
   margin: 10px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.link:hover {
+  text-decoration: none;
+  color: purple;
+}
+
+.showing {
+  display: block;
+}
+.hidden {
+  display: none;
 }
 
 @media (max-width: 768px) {

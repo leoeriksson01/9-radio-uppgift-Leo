@@ -1,0 +1,98 @@
+.container {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+.login_form h1 {
+  font-size: 1.8rem;
+  color: #353336;
+}
+
+.login_form {
+  display: flex;
+  flex-direction: column;
+  color: #353336;
+  width: 35%;
+}
+
+.login_form input {
+  border: 0.5px solid #95918e;
+  border-radius: 3px;
+  padding: 0.8rem 0.5rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+/*  Labels */
+.login_form label {
+  font-size: 0.8rem;
+}
+
+.login_form button {
+  background-color: rgb(136, 36, 136);
+  border-style: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  padding: 10px 12px;
+}
+
+/* Register section */
+.register {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+  border-top: 0.5px solid #d1d1cf;
+  margin-top: 2rem;
+  align-items: center;
+  color: #353336;
+}
+
+.register h2 {
+  font-size: 1rem;
+  padding-top: 0.4rem;
+}
+
+.register a {
+  color: green;
+  margin-left: 5px;
+}
+.register a:hover {
+  text-decoration: none;
+}
+
+/* Error Message */
+.errorMsg {
+  color: rgba(255, 0, 0, 0.84);
+  font-size: 0.8rem;
+  padding-top: 0.3rem;
+}
+
+/* Media queries */
+
+@media (max-width: 1024px) {
+  .modal_content {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal_content {
+    width: 55%;
+  }
+}
+
+@media (max-width: 576px) {
+  .modal {
+    overflow: hidden;
+  }
+  .modal_content {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+}

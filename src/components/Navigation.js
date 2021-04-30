@@ -3,12 +3,16 @@ import Profile from "../assets/profile.png";
 import React, { useState } from "react";
 import style from "../css/Navigation.module.css";
 import useOnclickOutside from "react-cool-onclickoutside";
+import { NavLink } from "react-router-dom";
+import ProfileMenu from "../components/ProfileMenu";
 
 const Navigation = () => {
   const [profileMenu, setProfileMenu] = useState(false);
   const profile_menu_close = useOnclickOutside(() => setProfileMenu(false));
-  const toggleProfileMenu = (e) => {
-    setProfileMenu((profileMenu) => !profileMenu);
+  const [profileMenuShow, setProfileMenuShow] = useState(false);
+
+  const toggleProfileMenu = () => {
+    setProfileMenuShow((profileMenuShow) => !profileMenuShow);
   };
 
   return (
@@ -35,15 +39,15 @@ const Navigation = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link className={style.link} href="/">
-                Home
-              </Nav.Link>
-              <Nav.Link className={style.link} href="/Browse">
-                Channels
-              </Nav.Link>
-              <Nav.Link className={style.link} href="/Categories">
-                Programs/Categories
-              </Nav.Link>
+              <NavLink exact to="/" className={style.link}>
+                Hem
+              </NavLink>
+              <NavLink exact to="/Channels" className={style.link}>
+                Kanaler
+              </NavLink>
+              <NavLink exact to="/Categories" className={style.link}>
+                Program/Kategorier
+              </NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -55,6 +59,11 @@ const Navigation = () => {
             alt="profile"
             className={style.profile_icon}
           />
+          <div className={`${profileMenuShow ? style.showing : style.hidden}`}>
+            <div className={style.profileMenuList}>
+              <ProfileMenu></ProfileMenu>
+            </div>
+          </div>
         </div>
       </Navbar>
     </div>

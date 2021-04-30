@@ -1,16 +1,22 @@
 import style from "../css/RadioCard.module.css";
 import { ChannelContext } from "../contexts/ChannelContext";
 import { useHistory } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Card } from "react-bootstrap";
+import RadioItem from "./RadioItem";
 
 const RadioCard = () => {
   const history = useHistory();
   const { channels, schedule, getChannelSchedule } = useContext(ChannelContext);
+  const [favorite, setFavorite] = useState(null);
 
   const handleClick = (channelId) => {
     getChannelSchedule(channelId);
     history.push(`/schedule/${channelId}`);
+  };
+
+  const toggleFavorite = () => {
+    setFavorite((favorite) => !favorite);
   };
 
   console.log(schedule);
@@ -22,18 +28,7 @@ const RadioCard = () => {
         : channels.channels.map((channel) => {
             return (
               <div className={style.content} key={channel.id}>
-                <Card
-                  className={style.card1}
-                  onClick={() => handleClick(channel.id)}
-                >
-                  <Card.Img variant="top" src={channel.image} />
-                  <Card.Body>
-                    <Card.Title className={style.decorated}>
-                      {channel.name} {channel.channeltype}
-                    </Card.Title>
-                    <Card.Text>{channel.tagline}</Card.Text>
-                  </Card.Body>
-                </Card>
+                <RadioItem channel={channel} />
               </div>
             );
           })}

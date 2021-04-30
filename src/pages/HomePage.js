@@ -4,7 +4,7 @@ const HomePage = () => {
   return (
     <div className={style.home}>
       <div className={style.banner}>
-        <h2 className={style.bannerText}> Welcome to Nordic Radio </h2>
+        <h2 className={style.bannerText}> Välkommen till Nordic Radio! </h2>
       </div>
     </div>
   );

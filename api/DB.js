@@ -2,14 +2,13 @@ const path = require("path");
 const sqlite3 = require("sqlite3");
 
 // The name of the db in this line of code must match the name you gave your database when you created it.
-const dbPath = path.join(__dirname, "./blogDataBase.db");
+const dbPath = path.join(__dirname, "../src/userDB.db");
 
 // wrapper for async/await
 module.exports = class DB {
   constructor() {
     this.db = new sqlite3.Database(dbPath);
   }
-
   runner(method, query, params) {
     return new Promise((res) => {
       this.db[method](query, params, (err, result) => {

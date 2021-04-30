@@ -7,10 +7,22 @@ const ChannelProvider = (props) => {
   const [singleChannel, setSingleChannel] = useState(null);
   const [schedule, setSchedule] = useState(null);
   const [category, setCategory] = useState(null);
+  const [favoriteChannels, setFavoriteChannels] = useState(null);
 
   useEffect(() => {
     getAllChannels();
   }, []);
+
+  useEffect(() => {
+    getAllFavoriteChannels();
+  }, []);
+
+  const getAllFavoriteChannels = async () => {
+    let favoriteChannels = await fetch("/api/v1/user/getAllFavoriteChannels");
+    let data = await favoriteChannels.json();
+    console.log(data);
+    setFavoriteChannels(data);
+  };
 
   const getAllChannels = async () => {
     let channels = await fetch("/api/v1/channels");
@@ -49,7 +61,10 @@ const ChannelProvider = (props) => {
     schedule,
     category,
     getCategoryById,
+    favoriteChannels,
+    getAllFavoriteChannels,
   };
+
   return (
     <ChannelContext.Provider value={values}>
       {props.children}

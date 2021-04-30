@@ -40,7 +40,7 @@ const getChannelSchedule = async (req, res) => {
 
 const getCategoryById = async (req, res) => {
   let category = await fetch(
-    `http://api.sr.se/api/v2/programs/index?programcategoryid=${req.params.channelId}&${json}`
+    `http://api.sr.se/api/v2/programs/index?programcategoryid=${req.params.channelId}&${json}&${paginationFalse}`
   );
   category = await category.json();
   res.json(category);

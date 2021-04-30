@@ -19,7 +19,6 @@
 
 .card1:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  cursor: pointer;
 }
 
 .decorated {
@@ -28,10 +27,32 @@
 
 .decorated:hover {
   color: purple;
+  cursor: pointer;
 }
 
 .card1 img {
   width: 80px;
   height: 80px;
   margin: auto;
+}
+
+.star {
+  background: url("../assets/star.png");
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.favorite {
+  background: url("../assets/star2.png");
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .card1 {
+    width: 100% !important;
+  }
 }

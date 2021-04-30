@@ -6,6 +6,7 @@ import { Card } from "react-bootstrap";
 const ChannelPage = (props) => {
   const { getChannelById, singleChannel } = useContext(ChannelContext);
   const { channelId } = props.match.params;
+  console.log(singleChannel);
 
   useEffect(() => {
     getChannelById(channelId);

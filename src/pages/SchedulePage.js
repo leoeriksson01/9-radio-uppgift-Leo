@@ -3,7 +3,7 @@ import { ChannelContext } from "../contexts/ChannelContext";
 import style from "../css/SchedulePage.module.css";
 
 const SchedulePage = (props) => {
-  const { schedule } = useContext(ChannelContext);
+  const { schedule, channelId, getChannelById } = useContext(ChannelContext);
   const [descriptionShow, setDescriptionShow] = useState(false);
   console.log(schedule);
 
@@ -13,6 +13,7 @@ const SchedulePage = (props) => {
   }, []);
 
   const toggleDescription = () => {
+    getChannelById(channelId);
     setDescriptionShow((descriptionShow) => !descriptionShow);
   };
 
@@ -22,9 +23,14 @@ const SchedulePage = (props) => {
         ? ""
         : schedule.map((scheduledepisode, i) => {
             return (
-              <li className={style.content} key={i} onClick={toggleDescription}>
-                {i} {scheduledepisode.title} {scheduledepisode.starttimeutc} -{" "}
-                {scheduledepisode.endtimeutc}
+              <li className={style.content} key={i}>
+                <div className={style.first}>
+                  <div className={style.header} onClick={toggleDescription}>
+                    {scheduledepisode.title} {scheduledepisode.starttimeutc} -{" "}
+                    {scheduledepisode.endtimeutc}{" "}
+                  </div>
+                </div>
+
                 <div
                   className={`${
                     descriptionShow ? style.showing : style.hidden
