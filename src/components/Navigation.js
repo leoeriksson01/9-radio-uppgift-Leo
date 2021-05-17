@@ -43,10 +43,13 @@ const Navigation = () => {
                 Hem
               </NavLink>
               <NavLink exact to="/Channels" className={style.link}>
-                Kanaler
+                Kanaler/Tablå
               </NavLink>
               <NavLink exact to="/Categories" className={style.link}>
-                Program/Kategorier
+                Kategorier
+              </NavLink>
+              <NavLink exact to="/Programs" className={style.link}>
+                Kanaler/Program
               </NavLink>
             </Nav>
           </Navbar.Collapse>

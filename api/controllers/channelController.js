@@ -20,6 +20,14 @@ const getChannelById = async (req, res) => {
   res.json(channel);
 };
 
+const getProgramById = async (req, res) => {
+  let program = await fetch(
+    `http://api.sr.se/api/v2/programs/index?channelId=${req.params.channelId}&${json}&${paginationFalse}`
+  );
+  program = await program.json();
+  res.json(program);
+};
+
 const getChannelSchedule = async (req, res) => {
   let channelSchedule = await fetch(
     `http://api.sr.se/api/v2/scheduledepisodes?${json}&${paginationFalse}&channelId=${req.params.channelId}&date=${req.query.date}`
@@ -52,4 +60,5 @@ module.exports = {
   getChannelById,
   getChannelSchedule,
   getCategoryById,
+  getProgramById,
 };

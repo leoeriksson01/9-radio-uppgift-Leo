@@ -4,13 +4,14 @@ import ChannelProvider from "./contexts/ChannelContext";
 import Navigation from "./components/Navigation";
 import HomePage from "./pages/HomePage";
 import BrowsePage from "./pages/BrowsePage";
-import ChannelPage from "./pages/ChannelPage";
+import ProgramsPage from "./pages/ProgramsPage";
 import SchedulePage from "./pages/SchedulePage";
 import CategoriesPage from "./pages/CategoriesPage";
 import CategoryPage from "./pages/CategoryPage";
 import LogInPage from "./pages/LogInPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
+import ProgramPage from "./pages/ProgramPage";
 
 const App = () => {
   return (
@@ -21,8 +22,9 @@ const App = () => {
             <Navigation />
             <Route exact path="/" component={HomePage} />
             <Route exact path="/Channels" component={BrowsePage} />
-            <Route exact path="/channels/:channelId" component={ChannelPage} />
             <Route exact path="/schedule/:channelId" component={SchedulePage} />
+            <Route exact path="/Programs" component={ProgramsPage} />
+            <Route exact path="/programs/:channelId" component={ProgramPage} />
             <Route exact path="/Categories" component={CategoriesPage} />
             <Route exact path="/category/:channelId" component={CategoryPage} />
             <Route exact path="/LogIn" component={LogInPage} />

@@ -20,8 +20,33 @@ const getAllFavoriteChannels = (req, res) => {
   console.log(favoriteChannels);
 };
 
+const getAllFavoritePrograms = (req, res) => {
+  query = /*sql*/ `SELECT * FROM favoritePrograms`;
+  let favoritePrograms = db.all(query, {}, function (err, data) {
+    if (err) {
+      console.log(err);
+      throw err;
+    }
+    console.log(data);
+    res.json(data);
+  });
+  console.log(favoritePrograms);
+};
+
 const deleteFav = (req, res) => {
   let query = /*sql*/ `DELETE FROM favoriteChannels WHERE channelId = $channelId`;
+  let id = req.params.id;
+  console.log(id);
+  db.get(query, id, function (err, data) {
+    if (err) {
+      console.log(err);
+      throw err;
+    }
+  });
+};
+
+const deleteFavProgram = (req, res) => {
+  let query = /*sql*/ `DELETE FROM favoritePrograms WHERE programId = $programId`;
   let id = req.params.id;
   console.log(id);
   db.get(query, id, function (err, data) {
@@ -35,7 +60,7 @@ const deleteFav = (req, res) => {
 const addToFav = (req, res) => {
   let favoriteToRegister = req.body;
 
-  // Before trying to register the user, lets find out if the user already exists
+  // Before trying to register the user, lets find out if the channel already exists
   let query = /*sql*/ `SELECT * FROM favoriteChannels WHERE channelId = $channelId`;
   let params = { $channelId: favoriteToRegister.channelId };
   db.get(query, params, (err, channelExist) => {
@@ -62,6 +87,40 @@ const addToFav = (req, res) => {
 
     res.json({
       success: "Channel registered successfully",
+      lastID: this.lastID,
+    });
+  });
+};
+
+const addProgramToFav = (req, res) => {
+  let favoriteProgramToRegister = req.body;
+
+  // Before trying to register the user, lets find out if the program already exists
+  let query = /*sql*/ `SELECT * FROM favoritePrograms WHERE programId = $programId`;
+  let params = { $programId: favoriteProgramToRegister.programId };
+  db.get(query, params, (err, programExist) => {
+    if (programExist) {
+      res.status(400).json({ error: "This program is already favorited" });
+      return;
+    }
+  });
+
+  query = /*sql*/ `INSERT INTO favoritePrograms (userId, programId, programName, programDescription) VALUES ($userId, $id, $name, $description)`;
+  params = {
+    $userId: favoriteProgramToRegister.userId,
+    $id: favoriteProgramToRegister.id,
+    $name: favoriteProgramToRegister.name,
+    $description: favoriteProgramToRegister.description,
+  };
+
+  db.run(query, params, function (err) {
+    if (err) {
+      res.status(400).json({ error: err });
+      return;
+    }
+
+    res.json({
+      success: "Program registered successfully",
       lastID: this.lastID,
     });
   });
@@ -140,4 +199,7 @@ module.exports = {
   addToFav,
   deleteFav,
   getAllFavoriteChannels,
+  addProgramToFav,
+  deleteFavProgram,
+  getAllFavoritePrograms,
 };

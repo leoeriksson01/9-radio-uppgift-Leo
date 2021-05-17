@@ -7,5 +7,6 @@ router.get("", channelController.getAllChannels);
 router.get("/schedule/:channelId", channelController.getChannelSchedule);
 router.get("/category/:channelId", channelController.getCategoryById);
 router.get("/channels/:channelId", channelController.getChannelById);
+router.get("/programs/:channelId", channelController.getProgramById);
 
 module.exports = router;

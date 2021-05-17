@@ -24,6 +24,7 @@ app.use(
 );
 
 app.use("/api/v1/channels", channelRoutes);
+app.use("/api/v1/programs", channelRoutes);
 app.use("/api/v1/category", channelRoutes);
 
 app.use("/api/v1", channelRoutes);

@@ -7,7 +7,6 @@ import { Card } from "react-bootstrap";
 const CategoryPage = (props) => {
   const { category, getChannelById } = useContext(ChannelContext);
   console.log(category);
-  const { channelId } = props.match.params;
   const history = useHistory();
   const [descriptionShow, setDescriptionShow] = useState(false);
 
@@ -18,11 +17,6 @@ const CategoryPage = (props) => {
 
   const toggleDescription = () => {
     setDescriptionShow((descriptionShow) => !descriptionShow);
-  };
-
-  const handleClick = (channelId) => {
-    getChannelById(channelId);
-    history.push(`/channels/${channelId}`);
   };
 
   return (

@@ -4,6 +4,7 @@ export const UserContext = createContext();
 const UserProvider = (props) => {
   const [user, setUser] = useState(null);
   const [favorite, setFavorite] = useState([]);
+  const [favoriteProgram, setFavoriteProgram] = useState([]);
 
   useEffect(() => {
     whoami();
@@ -28,6 +29,31 @@ const UserProvider = (props) => {
         "content-type": "application/json",
       },
       body: JSON.stringify(newFav),
+    });
+    result = result.json();
+
+    return result;
+  };
+
+  const addProgramToFav = async (newFavProgram) => {
+    // remove if already in array
+    if (favoriteProgram.some((a) => a.id === newFavProgram.id)) {
+      setFavoriteProgram(
+        favoriteProgram.filter((a) => a.id !== newFavProgram.id)
+      );
+      await fetch("/api/v1/user/deleteFavProgram/" + newFavProgram.id, {
+        method: "DELETE",
+      });
+      return;
+      // add if not in array
+    } else setFavoriteProgram([...favoriteProgram, newFavProgram]);
+
+    let result = await fetch("/api/v1/user/addProgramToFav", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newFavProgram),
     });
     result = result.json();
 
@@ -93,6 +119,7 @@ const UserProvider = (props) => {
     user,
     favorite,
     addToFav,
+    addProgramToFav,
   };
 
   return (

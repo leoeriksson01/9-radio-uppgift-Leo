@@ -5,9 +5,11 @@ const fetch = require("node-fetch");
 const ChannelProvider = (props) => {
   const [channels, setChannels] = useState(null);
   const [singleChannel, setSingleChannel] = useState(null);
+  const [program, setProgram] = useState(null);
   const [schedule, setSchedule] = useState(null);
   const [category, setCategory] = useState(null);
   const [favoriteChannels, setFavoriteChannels] = useState(null);
+  const [favoritePrograms, setFavoritePrograms] = useState(null);
 
   useEffect(() => {
     getAllChannels();
@@ -17,11 +19,20 @@ const ChannelProvider = (props) => {
     getAllFavoriteChannels();
   }, []);
 
+  useEffect(() => {
+    getAllFavoritePrograms();
+  }, []);
+
   const getAllFavoriteChannels = async () => {
     let favoriteChannels = await fetch("/api/v1/user/getAllFavoriteChannels");
     let data = await favoriteChannels.json();
-    console.log(data);
     setFavoriteChannels(data);
+  };
+
+  const getAllFavoritePrograms = async () => {
+    let favoritePrograms = await fetch("/api/v1/user/getAllFavoritePrograms");
+    let data = await favoritePrograms.json();
+    setFavoritePrograms(data);
   };
 
   const getAllChannels = async () => {
@@ -37,6 +48,13 @@ const ChannelProvider = (props) => {
     channel = await channel.json();
     console.log(channel);
     setSingleChannel(channel);
+  };
+
+  const getProgramById = async (channelId) => {
+    let program = await fetch(`/api/v1/programs/${channelId}`);
+    program = await program.json();
+    console.log(program);
+    setProgram(program);
   };
 
   const getChannelSchedule = async (channelId) => {
@@ -63,6 +81,10 @@ const ChannelProvider = (props) => {
     getCategoryById,
     favoriteChannels,
     getAllFavoriteChannels,
+    getProgramById,
+    program,
+    getAllFavoritePrograms,
+    favoritePrograms,
   };
 
   return (
